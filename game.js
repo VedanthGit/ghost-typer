@@ -89,3 +89,24 @@ const CONFIG = {
 	PHANTOM_MODE_TRIGGER: 5, // Every 5 successful words
 	DIFFICULTY_SCALE: 0.15, // 15% increase in distortion per level
 };
+
+// GAME STATE
+const gameState = {
+    currentState: GAME_STATES.BOOT,
+    level: 1,
+    currentWord: "",
+    playerInput: "",
+    streak: 0,
+    longest: 0,
+    wordsCompleted: 0,
+    totalKeyStrokes: 0,
+    totalErrors: 0,
+    sessionStartTime: null,
+	roundStartTime: null,
+	timeRemaining: 0,
+    maxTime: CONFIG.BASE_TIME,
+    isPhantomMode: false,
+	ghostWords: [],
+	difficultyMultiplier: 1.0,
+	animationFrameId: null,
+}
