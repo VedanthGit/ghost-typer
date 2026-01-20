@@ -92,21 +92,53 @@ const CONFIG = {
 
 // GAME STATE
 const gameState = {
-    currentState: GAME_STATES.BOOT,
-    level: 1,
-    currentWord: "",
-    playerInput: "",
-    streak: 0,
-    longest: 0,
-    wordsCompleted: 0,
-    totalKeyStrokes: 0,
-    totalErrors: 0,
-    sessionStartTime: null,
+	currentState: GAME_STATES.BOOT,
+	level: 1,
+	currentWord: "",
+	playerInput: "",
+	streak: 0,
+	longest: 0,
+	wordsCompleted: 0,
+	totalKeyStrokes: 0,
+	totalErrors: 0,
+	sessionStartTime: null,
 	roundStartTime: null,
 	timeRemaining: 0,
-    maxTime: CONFIG.BASE_TIME,
-    isPhantomMode: false,
+	maxTime: CONFIG.BASE_TIME,
+	isPhantomMode: false,
 	ghostWords: [],
 	difficultyMultiplier: 1.0,
 	animationFrameId: null,
-}
+};
+
+// DOM REFERENCES
+
+const DOM = {
+	bootScreen: document.getElementById("boot-screen"),
+	gameArena: document.getElementById("game-arena"),
+	collapseScreen: document.getElementById("collapse-screen"),
+	aftermathScreen: document.getElementById("aftermath-screen"),
+
+	mainWord: document.getElementById("main-word"),
+	ghostWord1: document.getElementById("ghost-1"),
+	ghostWord2: document.getElementById("ghost-2"),
+	ghostWord3: document.getElementById("ghost-3"),
+
+	hiddenInput: document.getElementById("hidden-input"),
+	inputFeedback: document.getElementById("input-feedback"),
+	timerBar: document.getElementById("timer-bar"),
+
+	levelDisplay: document.getElementById("level-display"),
+	streakDisplay: document.getElementById("streak-display"),
+	wpmDisplay: document.getElementById("wpm-display"),
+
+	collapseMessage: document.getElementById("collapse-message"),
+	failedWordReplay: document.getElementById("failed-word-replay"),
+
+	finalWPM: document.getElementById("final-wpm"),
+	finalAccuracy: document.getElementById("final-accuracy"),
+	finalStreak: document.getElementById("final-streak"),
+	finalWords: document.getElementById("final-words"),
+
+	retryButton: document.getElementById("retry-button"),
+};
