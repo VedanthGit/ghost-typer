@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Type Master - Words That Fear You Back</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Creepster&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- BG NOISE -->
+    <div class="noise-layer"></div>
+
+    <!-- BOOT SCREEN -->
+    <section id="boot-screen" class="boot-screen">
+        <div class="boot-content">
+            <h1 class="boot-text" id="boot-text">TYPE TO BEGIN</h1>
+            <div class="cursor-blink"></div>
+        </div>
+    </section>
+
+    <!-- ACTIVE TYPING [GAME BEGIN] -->
+    <section id="game-arena" class="game-arena">
+        <!-- STATS HEADER -->
+        <div class="stats-header">
+            <div class="stat-item">
+                <span class="stat-label">Level</span>
+                <span class="stat-value" id="level-display">1</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Streak</span>
+                <span class="stat-value" id="streak-display"></span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">WPM</span>
+                <span class="stat-value" id="wpm-display">0</span>
+            </div>
+        </div>
+
+        <!-- MAIN WORD CONTAINER -->
+        <div class="word-container" id="word-container">
+            <div class="word-entity" id="main-word" data-word=""></div>
+            <!-- GHOST WORDS FOR PHANTOM MODE -->
+            <div class="ghost-word ghost-1" id="ghost-1"></div>
+            <div class="ghost-word ghost-2" id="ghost-2"></div>
+            <div class="ghost-word ghost-3" id="ghost-3"></div>
+        </div>
+
+        <!-- TIMER BAR -->
+        <div class="timer-container">
+            <div class="timer-bar" id="timer-bar"></div>
+        </div>
+
+        <!-- INPUT FEEDBACK -->
+        <div class="input-feedback" id="input-feedback"></div>
+
+        <!-- HIDDEN INPUT CAPTURE -->
+        <input type="text" id="hidden-input" class="hidden-input" autocomplete="off" autocorrect="off">
+    </section>
+
+    <!-- COLLAPSE SCRREN -->
+    <section id="collapse-screen" class="collapse-screen">
+        <div class="collapse-message" id="collapse-message"></div>
+    </section>
+
+    <!-- STATS -->
+    <section id="aftermath-screen" class="aftermath-screen hidden">
+        <h2 class="aftermath-title">Session Complete</h2>
+        <div class="aftermath-stats">
+            <div class="stat-reveal" id="stat-wpm">
+                <span class="stat-label">Words Per Minute</span>
+                <span class="stat-value-large" id="final-wpm">0</span>
+            </div>
+            <div class="stat-reveal" id="stat-accuracy">
+                <span class="stat-label">Accuracy</span>
+                <span class="stat-value-large" id="final-accuracy">0%</span>
+            </div>
+            <div class="stat-reveal" id="stat-streak">
+                <span class="stat-label">Longest Streak</span>
+                <span class="stat-value-large" id="final-streak">0</span>
+            </div>
+            <div class="stat-reveal" id="stat-words">
+                <span class="stat-label">Words Completed</span>
+                <span class="stat-value-large" id="final-words">0</span>
+            </div>
+        </div>
+
+        <!-- GHOST REPLAY OF FAILED WORD -->
+        <div class="failed-word-replay" id="failed-word-replay"></div>
+
+        <button class="retry-button hidden" id="retry-button">R E T R Y</button>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script src="storage.js"></script>
+    <script src="audio.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
