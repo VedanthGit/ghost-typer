@@ -202,3 +202,146 @@ body {
         transform: translate(2px, 0);
     }
 }
+
+/* GAME BEGIN */
+.game-arena {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background: var(--void-black);
+    padding: 2rem;
+}
+
+/* STATS HEADER */
+.stats-header {
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    z-index: 5;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ghost-white);
+}
+
+/* WORD CONTAINER */
+.word-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem 0;
+}
+
+.word-entity {
+    font-size: clamp(3rem, 8w, 6rem);
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--ghost-white);
+    position: relative;
+    z-index: 3;
+    transition: all var(--transition-fast) ease-out;
+
+    /* Dynamix Filters [JS] */
+    filter: blur(var(--blur-intensity)) brightness(var(--brightness-level));
+    transform: skew(var(--distortion-skew));
+    opacity: var(--opacity-jitter);
+
+    text-shadow: 0 0 20px var(--crimson-accent), 0 0 40px var(--blood-red);
+}
+
+/* GHOST WORDS */
+.ghost-word {
+    position: absolute;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ghost-white);
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(2px);
+    transition: opacity 0.5s ease;
+}
+
+.ghost-word.active {
+    opacity: 0.4;
+    animation: drift 4s ease-in-out infinite;
+}
+
+.ghost-1 {
+    animation-delay: 0s;
+}
+
+.ghost-2 {
+    animation-delay: 1.3s;
+}
+
+.ghost-3 {
+    animation-delay: 2.6s;
+}
+
+@keyframes drift {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-30px, -20px);
+    }
+
+    50% {
+        transform: translate(30px, 10px);
+    }
+
+    75% {
+        transform: translate(-20px, 15px);
+    }
+}
+
+/* TIMER BAR */
+.timer-container {
+    width: 100%;
+    max-width: 600px;
+    height: 6px;
+    background: var(--shadow-gray);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.timer-bar {
+    height: 100%;
+    background: linear-gradient(90deg,
+            var(--corrupt-green) 0%,
+            var(--crimson-accent) 100%);
+    width: 100%;
+    transition: width 0.1s linear;
+    position: relative;
+    border-radius: 3px;
+    box-shadow: 0 0 10px var(--crimson-accent);
+}
