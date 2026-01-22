@@ -551,3 +551,39 @@ body.reality-collapse {
         filter: blur(0px);
     }
 }
+
+/* RETRY BUTTON */
+.retry-button {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    padding: 1rem 3rem;
+    background: transparent;
+    color: var(--ghost-white);
+    border: 2px solid var(--crimson-accent);
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.retry-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--crimson-accent);
+    transition: left var(--transition-medium);
+    z-index: -1;
+}
+
+.retry-button:hover::before {
+    left: 0;
+}
+
+.retry-button:hover {
+    color: var(--void-black);
+    box-shadow: 0 0 20px var(--crimson-accent);
+}
