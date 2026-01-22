@@ -146,10 +146,9 @@ const DOM = {
 	retryButton: document.getElementById("retry-button"),
 };
 
+let hasBooted = false;
 // INITIALIZING
 function init() {
-	let hasBooted = false;
-
 	GameState.difficultyMultiplier = Storage.getDifficultyMultiplier();
 
 	// BOOT SCREEN LISTENER
@@ -167,7 +166,7 @@ function handleBootKeydown(e) {
 
 	if (e.type === "keydown") {
 		e.preventDefault();
-		e.stopPropagation();
+		// e.stopPropagation();
 	}
 
 	// INITIALIZE AUDIO ON FIRST INTERACTION
