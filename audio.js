@@ -6,16 +6,21 @@ export const Audio = {
 	// Initialize Web Audio Context
 	init() {
 		if (this.isInitialized) return;
-
 		try {
 			this.audioContext = new (
 				window.AudioContext || window.webkitAudioContext
 			)();
+	
+			if (this.audioContext.state === "suspended") {
+				this.audioContext.resume();
+			}
+	
 			this.isInitialized = true;
 		} catch (error) {
 			console.warn("Web Audio API not supported", error);
 		}
 	},
+	
 
 	playTone(frequency, duration, type = "sine", volume = 0.3) {
 		if (!this.isInitialized || this.isMuted) return;
