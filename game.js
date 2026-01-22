@@ -152,12 +152,18 @@ function init() {
 	GameState.difficultyMultiplier = Storage.getDifficultyMultiplier();
 
 	// BOOT SCREEN LISTENER
+	document.addEventListener("pointerdown", handleBootKeydown, { once: true });
 	document.addEventListener("keydown", handleBootKeydown, { once: true });
-	document.addEventListener("touchstart", handleBootKeydown, { once: true });
-	document.addEventListener("click", handleBootKeydown, { once: true });
+
+	DOM.gameArena.addEventListener("touchstart", () => {
+		DOM.hiddenInput.focus();
+	});
 
 	// RETRY BUTTON
-	DOM.retryButton.addEventListener("click", resetGame);
+	DOM.retryButton.addEventListener("click", () => {
+		DOM.hiddenInput.focus();
+		resetGame();
+	});
 }
 
 function handleBootKeydown(e) {
@@ -166,14 +172,11 @@ function handleBootKeydown(e) {
 
 	if (e.type === "keydown") {
 		e.preventDefault();
-		// e.stopPropagation();
 	}
 
-	// INITIALIZE AUDIO ON FIRST INTERACTION
+	DOM.hiddenInput.focus();
 	Audio.init();
 	Audio.playKeystroke();
-
-	// TRANSACTION TO ACTIVE GAME
 	transitionToActive();
 }
 
@@ -185,7 +188,7 @@ function transitionToActive() {
 	GameState.sessionStartTime = Date.now();
 
 	// Focus hidden input for keyboard capture
-	DOM.hiddenInput.focus();
+	// DOM.hiddenInput.focus();
 	DOM.hiddenInput.removeEventListener("input", handlePlayerInput);
 	DOM.hiddenInput.addEventListener("input", handlePlayerInput);
 	DOM.hiddenInput.setAttribute("inputmode", "text");
@@ -241,9 +244,9 @@ function startRound() {
 
 	// START GAME LOOP
 	GameState.animationFrameId = requestAnimationFrame(gameLoop);
-	setTimeout(() => {
-		DOM.hiddenInput.focus();
-	}, 0);
+	// setTimeout(() => {
+	// 	DOM.hiddenInput.focus();
+	// }, 0);
 }
 
 function getWordTier() {
@@ -500,7 +503,7 @@ function resetGame() {
 	DOM.streakDisplay.textContent = "0";
 	DOM.wpmDisplay.textContent = "0";
 
-	DOM.hiddenInput.focus();
+	// DOM.hiddenInput.focus();
 
 	startRound();
 }
