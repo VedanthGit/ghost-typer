@@ -152,6 +152,8 @@ function init() {
 
 	// BOOT SCREEN LISTENER
 	document.addEventListener("keydown", handleBootKeydown, { once: true });
+	document.addEventListener("touchstart", handleBootKeydown, { once: true });
+	document.addEventListener("click", handleBootKeydown, { once: true });
 
 	// RETRY BUTTON
 	DOM.retryButton.addEventListener("click", resetGame);
@@ -177,7 +179,13 @@ function transitionToActive() {
 
 	// Focus hidden input for keyboard capture
 	DOM.hiddenInput.focus();
+	DOM.hiddenInput.removeEventListener("input", handlePlayerInput);
 	DOM.hiddenInput.addEventListener("input", handlePlayerInput);
+	DOM.hiddenInput.setAttribute("inputmode", "text");
+	DOM.hiddenInput.setAttribute("autocapitalize", "off");
+	DOM.hiddenInput.setAttribute("autocomplete", "off");
+	DOM.hiddenInput.setAttribute("autocorrect", "off");
+	DOM.hiddenInput.setAttribute("spellcheck", "false");
 
 	startRound();
 }
@@ -226,6 +234,9 @@ function startRound() {
 
 	// START GAME LOOP
 	GameState.animationFrameId = requestAnimationFrame(gameLoop);
+	setTimeout(() => {
+		DOM.hiddenInput.focus();
+	}, 0);
 }
 
 function getWordTier() {
@@ -262,7 +273,16 @@ function gameLoop(timestamp) {
 	GameState.animationFrameId = requestAnimationFrame(gameLoop);
 }
 
+const IS_MOBILE = window.matchMedia("(max-width: 768px)").matches;
+
 function updateVisualEffects(percentRemaining) {
+	if (IS_MOBILE) {
+		document.documentElement.style.setProperty("--blur-intensity", "0px");
+		document.documentElement.style.setProperty("--distortion-skew", "0deg");
+		document.documentElement.style.setProperty("--opacity-jitter", 1);
+		document.documentElement.style.setProperty("--brightness-level", "100%");
+		return;
+	}
 	const corruption = 100 - percentRemaining;
 	const difficultyFactor =
 		1 +
@@ -370,7 +390,8 @@ function showAftermath() {
 
 	const sessionDuration = (Date.now() - GameState.sessionStartTime) / 1000 / 60;
 
-	const wpm = Math.round(GameState.wordsCompleted / sessionDuration);
+	const safeDuration = Math.max(sessionDuration, 0.25);
+	const wpm = Math.round(GameState.wordsCompleted / safeDuration);
 	const accuracy =
 		GameState.totalKeystrokes > 0
 			? Math.round(
