@@ -386,13 +386,8 @@ body {
 /* HIDDEN INPUT */
 .hidden-input {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    opacity: 0.01;
-    /* NOT zero */
-    pointer-events: auto;
+    opacity: 0;
+    pointer-events: none;
 }
 
 
@@ -602,11 +597,6 @@ body.reality-collapse {
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
-
-    body {
-        overflow: auto;
-    }
-
     .stats-header {
         gap: 1.5rem;
         font-size: 0.9rem;
@@ -622,25 +612,8 @@ body.reality-collapse {
         gap: 1rem;
     }
 
-    .aftermath-screen {
-        justify-content: flex-start;
-        overflow-y: auto;
-        padding-bottom: 6rem;
-    }
-
     .stat-value-large {
         font-size: 2rem;
-    }
-
-    .input-feedback {
-        position: fixed;
-        bottom: calc(env(safe-area-inset-bottom) + 12rem);
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 20;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
     }
 }
 
