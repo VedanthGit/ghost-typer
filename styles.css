@@ -612,6 +612,12 @@ body.reality-collapse {
         gap: 1rem;
     }
 
+    .aftermath-screen {
+        justify-content: flex-start;
+        overflow-y: auto;
+        padding-bottom: 6rem;
+    }
+
     .stat-value-large {
         font-size: 2rem;
     }
