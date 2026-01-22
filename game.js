@@ -155,10 +155,6 @@ function init() {
 	document.addEventListener("pointerdown", handleBootKeydown, { once: true });
 	document.addEventListener("keydown", handleBootKeydown, { once: true });
 
-	DOM.gameArena.addEventListener("touchstart", () => {
-		DOM.hiddenInput.focus();
-	});
-
 	// RETRY BUTTON
 	DOM.retryButton.addEventListener("click", () => {
 		DOM.hiddenInput.focus();
@@ -174,10 +170,16 @@ function handleBootKeydown(e) {
 		e.preventDefault();
 	}
 
-	DOM.hiddenInput.focus();
 	Audio.init();
 	Audio.playKeystroke();
-	transitionToActive();
+
+	// Focus FIRST
+	DOM.hiddenInput.focus();
+
+	// Delay UI mutation to next tick
+	setTimeout(() => {
+		transitionToActive();
+	}, 50);
 }
 
 function transitionToActive() {
