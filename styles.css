@@ -345,3 +345,38 @@ body {
     border-radius: 3px;
     box-shadow: 0 0 10px var(--crimson-accent);
 }
+
+/* INPUT FEEDBACK */
+.input-feedback {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    color: var(--ash-gray);
+    min-height: 2rem;
+    font-family: var(--font-mono);
+}
+
+.input-feedback .correct {
+    color: var(--corrupt-green);
+}
+
+.input-feedback .incorrect {
+    color: var(--crimson-accent);
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
