@@ -621,6 +621,17 @@ body.reality-collapse {
     .stat-value-large {
         font-size: 2rem;
     }
+
+    .input-feedback {
+        position: fixed;
+        bottom: calc(env(safe-area-inset-bottom) + 12rem);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+    }
 }
 
 @media (max-width: 480px) {
