@@ -390,8 +390,9 @@ body {
     left: 0;
     width: 1px;
     height: 1px;
-    opacity: 0.01; /* NOT zero */
-    pointer-events: none;
+    opacity: 0.01;
+    /* NOT zero */
+    pointer-events: auto;
 }
 
 
