@@ -160,6 +160,10 @@ function init() {
 }
 
 function handleBootKeydown(e) {
+
+	if (hasBooted) return;
+	hasBooted = true;
+	
 	e.preventDefault();
 	e.stopPropagation();
 	// INITIALIZE AUDIO ON FIRST INTERACTION
