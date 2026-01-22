@@ -148,6 +148,8 @@ const DOM = {
 
 // INITIALIZING
 function init() {
+	let hasBooted = false;
+
 	GameState.difficultyMultiplier = Storage.getDifficultyMultiplier();
 
 	// BOOT SCREEN LISTENER
@@ -160,12 +162,14 @@ function init() {
 }
 
 function handleBootKeydown(e) {
-
 	if (hasBooted) return;
 	hasBooted = true;
-	
-	e.preventDefault();
-	e.stopPropagation();
+
+	if (e.type === "keydown") {
+		e.preventDefault();
+		e.stopPropagation();
+	}
+
 	// INITIALIZE AUDIO ON FIRST INTERACTION
 	Audio.init();
 	Audio.playKeystroke();
