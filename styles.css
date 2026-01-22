@@ -13,7 +13,7 @@
     --blur-intensity: 0px;
     --distortion-skew: 0deg;
     --opacity-jitter: 1;
-    --crimson-accent: 0%;
+    --corruption-level: 0%;
     --brightness-level: 100%;
 
     /* TYPOGRAPHY */
@@ -249,13 +249,14 @@ body {
     width: 100%;
     max-width: 800px;
     height: 200px;
+    display: flex;
     align-items: center;
     justify-content: center;
     margin: 4rem 0;
 }
 
 .word-entity {
-    font-size: clamp(3rem, 8w, 6rem);
+    font-size: clamp(3rem, 8vw, 6rem);
     font-weight: bold;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
@@ -356,14 +357,15 @@ body {
     font-family: var(--font-mono);
 }
 
-.input-feedback .correct {
+.input-feedback.correct {
     color: var(--corrupt-green);
 }
 
-.input-feedback .incorrect {
+.input-feedback.incorrect {
     color: var(--crimson-accent);
     animation: shake 0.3s;
 }
+
 
 @keyframes shake {
 
@@ -520,6 +522,7 @@ body.reality-collapse {
 }
 
 @keyframes glitch {
+
     0%,
     100% {
         transform: translate(0, 0);
@@ -565,6 +568,10 @@ body.reality-collapse {
     transition: all var(--transition-medium);
     position: relative;
     overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 .retry-button::before {
@@ -595,7 +602,8 @@ body.reality-collapse {
         font-size: 0.9rem;
     }
 
-    .word-entity,.ghost-word {
+    .word-entity,
+    .ghost-word {
         font-size: 2.5rem;
     }
 

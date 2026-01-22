@@ -25,7 +25,7 @@ export const Audio = {
 			const gainNode = this.audioContext.createGain();
 
 			oscillator.connect(gainNode);
-			gainNode.connect(this, this.audioContext.destination);
+			gainNode.connect(this.audioContext.destination);
 
 			oscillator.type = type;
 			oscillator.frequency.value = frequency;
@@ -44,7 +44,7 @@ export const Audio = {
 	},
 
 	playKeystroke() {
-		this.playTone(800, 0.05, "sqaure", 0.1);
+		this.playTone(800, 0.05, "square", 0.1);
 	},
 
 	playWhisper() {
