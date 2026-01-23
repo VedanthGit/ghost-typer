@@ -152,6 +152,8 @@ function init() {
 
 	// BOOT SCREEN LISTENER
 	document.addEventListener("keydown", handleBootKeydown, { once: true });
+	document.addEventListener("touchstart", handleBootKeydown, { once: true });
+	document.addEventListener("click", handleBootKeydown, { once: true });
 
 	// RETRY BUTTON
 	DOM.retryButton.addEventListener("click", resetGame);
