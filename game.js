@@ -317,6 +317,7 @@ function handlePlayerInput(e) {
 
 	if (target.startsWith(input)) {
 		DOM.inputFeedback.className = "input-feedback correct";
+		DOM.mainWord.style.opacity = input.length > 0 ? "0.6" : "1";
 		Audio.playKeystroke();
 
 		if (input === target) {
