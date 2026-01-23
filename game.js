@@ -166,6 +166,8 @@ function handleBootKeydown(e) {
 	Audio.init();
 	Audio.playKeystroke();
 
+	DOM.hiddenInput.focus();
+
 	// TRANSACTION TO ACTIVE GAME
 	transitionToActive();
 }
@@ -178,7 +180,7 @@ function transitionToActive() {
 	GameState.sessionStartTime = Date.now();
 
 	// Focus hidden input for keyboard capture
-	// DOM.hiddenInput.focus();
+	DOM.hiddenInput.focus();
 	DOM.hiddenInput.removeEventListener("input", handlePlayerInput);
 	DOM.hiddenInput.addEventListener("input", handlePlayerInput);
 	DOM.hiddenInput.setAttribute("inputmode", "text");
